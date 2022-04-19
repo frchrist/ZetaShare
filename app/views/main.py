@@ -14,7 +14,7 @@ sys.path.append(os.path.join(os.path.dirname(__file__), '..', 'tools'))
 from receiver import Receiver
 from sender import send_file
 from threading import Thread
-from address import gethost, encode_username, decode_username
+from address import get_host, encode_username, decode_username
 from storage import load_history, save_history
 from storage import save_r_d, load_r_d 
 from storage import load, set_, loadById
@@ -94,7 +94,7 @@ class App(tk.Tk):
 			return
 		self.state_label.config(bg=GREEN)
 
-		r = Receiver(gethost(), int(self.port.get()), self.state_label, self.Receivingprogress, self)
+		r = Receiver(get_host(), int(self.port.get()), self.state_label, self.Receivingprogress, self)
 					# host, port, status_bar, progress_bar, current_object
 		RECVS.clear()
 		RECVS.append(r)

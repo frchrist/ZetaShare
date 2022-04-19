@@ -7,7 +7,7 @@ sys.path.append(os.path.join(os.path.dirname(__file__), '..', 'tools'))
 import socket
 # import tqdm
 
-from constant import WAITING_FOR_FILE_MSG, READY_MSG
+from constant import WAITING_FOR_FILE_MSG, READY_MSG, BUFFER_SIZE, SEPARATOR
 from storage import format_file_name, destination_path
 
 
@@ -16,8 +16,8 @@ class Receiver:
         self.HOST = host
         self.PORT = port
         self.state = state
-        self.BUFFER_SIZE = 4096
-        self.SEPARATOR = "<SEPARATOR>"
+        self.BUFFER_SIZE = BUFFER_SIZE
+        self.SEPARATOR = SEPARATOR
         self.server = socket.socket()
         self.client_socket = None
         self.serverIsRunning = False

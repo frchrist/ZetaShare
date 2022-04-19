@@ -4,8 +4,8 @@ from sys import argv
 if "debug" in argv:
 	APP_DEBUG = True
 
-
-
+BUFFER_SIZE = 1024 * 4 # 4 k
+SEPARATOR = "<ZETA>"
 #ACTION TYPES
 START_RECEIVER_SERVER = 1
 START_SENDER_SERVER = 2

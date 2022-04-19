@@ -1,5 +1,6 @@
 import json
 import os
+from platform import system
 # import sys
 # sys.path.append(os.path.join(os.path.dirname(__file__), '..', 'tools'))
 from constant import APP_DEBUG
@@ -10,15 +11,15 @@ data["users"] = []
 data["r_d"] = ""
 data["main_port"] = ""
 
-BASE_DIR = f"c:/users/{os.getlogin()}/.zeta"
-
+BASE_DIR = f"c:/users/{os.getlogin()}/.zeta" if system() == "Windows" else "./.zeta"
+DEFAULT_DOWNLOAD_DIR  = str(os.path.expanduser("~")) # hone dir
 if not os.path.exists(BASE_DIR):
 	os.mkdir(BASE_DIR)
 STORAGE_PATH = f"{BASE_DIR}/storage.json"
 
 if APP_DEBUG:
 	from  random import randrange
-	STORAGE_PATH = f"c:/users/{os.getlogin()}/documents/storage{randrange(10, 90)}.json"
+	STORAGE_PATH = f"{BASE_DIR}/storage{randrange(10, 90)}.json"
 
 def dumpStorage(data):
 	with open(STORAGE_PATH, "w") as storage:
@@ -74,7 +75,7 @@ def format_file_name(filename, max_s=15):
 
 def destination_path():
     if load_r_d() == "":
-        return f"c:/users/{os.getlogin()}/desktop"
+        return DEFAULT_DOWNLOAD_DIR
     return load_r_d()
 
 

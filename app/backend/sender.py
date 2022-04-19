@@ -8,10 +8,8 @@ import socket
 # import tqdm
 
 from address import _encode_username
-from constant import INVALID_PORT_MSG, CONNECTION_FAILED, READY_MSG, B_BACKGROUND
+from constant import INVALID_PORT_MSG, CONNECTION_FAILED, READY_MSG, B_BACKGROUND, SEPARATOR, BUFFER_SIZE
 from storage import format_file_name
-SEPARATOR = "<SEPARATOR>"
-BUFFER_SIZE = 1024 * 4 #4K
 
 
 
@@ -70,13 +68,3 @@ def send_file(host, port,filename , state, progressBar, guiObj):
 
 if __name__ == "__main__":
     pass
-    # import argparse
-    # parser = argparse.ArgumentParser(description="Simple File Sender")
-    # parser.add_argument("file", help="File name to send")
-    # parser.add_argument("host", help="The host/IP address of the receiver")
-    # parser.add_argument("-p", "--port", help="Port to use, default is 5001", default=5001)
-    # args = parser.parse_args()
-    # filename = "video.mp4"
-    # host = "127.0.0.1"
-    # port = 2008
-    # send_file(filename, host, port)
